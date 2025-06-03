@@ -70,25 +70,6 @@
             background: linear-gradient(45deg, #764ba2, #667eea);
         }
 
-        .logout-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 8px 16px;
-            background: #dc3545;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .logout-btn:hover {
-            background: #c82333;
-            transform: translateY(-1px);
-        }
-
         .content-section {
             display: none;
             background: rgba(255, 255, 255, 0.95);
@@ -142,66 +123,6 @@
             border-color: #667eea;
         }
 
-        .form-group input.error {
-            border-color: #dc3545;
-        }
-
-        .error-message {
-            color: #dc3545;
-            font-size: 12px;
-            margin-top: 5px;
-            display: none;
-        }
-
-        .error-message.show {
-            display: block;
-        }
-
-        .password-strength {
-            margin-top: 5px;
-            height: 4px;
-            background: #e1e5e9;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .password-strength-bar {
-            height: 100%;
-            width: 0%;
-            transition: all 0.3s ease;
-        }
-
-        .strength-weak { background: #dc3545; }
-        .strength-medium { background: #ffc107; }
-        .strength-strong { background: #28a745; }
-
-        .password-requirements {
-            font-size: 12px;
-            color: #666;
-            margin-top: 8px;
-        }
-
-        .requirement {
-            display: flex;
-            align-items: center;
-            margin: 2px 0;
-        }
-
-        .requirement.valid {
-            color: #28a745;
-        }
-
-        .requirement::before {
-            content: '✗';
-            margin-right: 8px;
-            color: #dc3545;
-        }
-
-        .requirement.valid::before {
-            content: '✓';
-            color: #28a745;
-        }
-
         .btn {
             padding: 12px 24px;
             background: linear-gradient(45deg, #667eea, #764ba2);
@@ -213,28 +134,11 @@
             transition: all 0.3s ease;
             display: inline-block;
             text-decoration: none;
-            width: 100%;
-            text-align: center;
         }
 
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .btn-secondary {
-            background: #6c757d;
-            margin-top: 10px;
-        }
-
-        .btn-secondary:hover {
-            background: #545b62;
         }
 
         .btn-success {
@@ -247,50 +151,6 @@
 
         .btn-warning {
             background: linear-gradient(45deg, #ffc107, #fd7e14);
-        }
-
-        .auth-container {
-            max-width: 450px;
-            margin: 50px auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .auth-toggle {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .auth-toggle a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .auth-toggle a:hover {
-            text-decoration: underline;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            margin: 15px 0;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-            margin-right: 10px;
-            transform: scale(1.2);
-        }
-
-        .checkbox-group label {
-            margin: 0;
-            font-weight: normal;
-            font-size: 14px;
         }
 
         .status-card {
@@ -342,6 +202,52 @@
             color: white;
         }
 
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .wallet-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: #fff;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .wallet-btn:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .wallet-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .wallet-address {
+            font-family: monospace;
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+
         .positions-table {
             width: 100%;
             border-collapse: collapse;
@@ -380,7 +286,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             transform: translateX(400px);
             transition: transform 0.3s ease;
-            z-index: 1000;
         }
 
         .notification.show {
@@ -414,15 +319,6 @@
             margin-top: 5px;
         }
 
-        .welcome-message {
-            background: linear-gradient(45deg, #28a745, #20c997);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
         @media (max-width: 768px) {
             .nav-tabs {
                 flex-wrap: wrap;
@@ -437,88 +333,33 @@
             .grid {
                 grid-template-columns: 1fr;
             }
-
-            .auth-container {
-                margin: 20px;
-                padding: 30px 20px;
-            }
         }
     </style>
 </head>
 <body>
     <div id="app">
-        <!-- Login/Signup Screen -->
-        <div id="authScreen">
-            <div class="auth-container">
+        <!-- Login Screen -->
+        <div id="loginScreen">
+            <div class="login-container">
                 <h2 class="logo">CryptoBot Pro</h2>
-                
-                <!-- Login Form -->
-                <div id="loginForm">
-                    <h3 style="text-align: center; margin-bottom: 30px; color: #555;">Welcome Back</h3>
-                    <form id="loginFormElement">
-                        <div class="form-group">
-                            <label for="loginEmail">Email Address</label>
-                            <input type="email" id="loginEmail" name="email" required>
-                            <div class="error-message" id="loginEmailError"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="loginPassword">Password</label>
-                            <input type="password" id="loginPassword" name="password" required>
-                            <div class="error-message" id="loginPasswordError"></div>
-                        </div>
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="rememberMe" name="rememberMe">
-                            <label for="rememberMe">Remember me for 7 days</label>
-                        </div>
-                        <button type="submit" class="btn" id="loginBtn">Sign In</button>
-                    </form>
-                    <div class="auth-toggle">
-                        Don't have an account? <a href="#" onclick="showSignupForm()">Create one here</a>
-                    </div>
+                <div id="walletConnectSection">
+                    <button class="wallet-btn" onclick="connectMetaMask()">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" alt="MetaMask">
+                        Connect with MetaMask
+                    </button>
+                    <button class="wallet-btn" onclick="connectBitGetWallet()">
+                        <img src="https://bitget-wallet-prod.oss-ap-southeast-1.aliyuncs.com/logo/icon_256x256.png" alt="BitGet Wallet">
+                        Connect with BitGet Wallet
+                    </button>
                 </div>
-
-                <!-- Signup Form -->
-                <div id="signupForm" style="display: none;">
-                    <h3 style="text-align: center; margin-bottom: 30px; color: #555;">Create Account</h3>
-                    <form id="signupFormElement">
-                        <div class="form-group">
-                            <label for="signupFullName">Full Name</label>
-                            <input type="text" id="signupFullName" name="fullName" required>
-                            <div class="error-message" id="signupFullNameError"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupEmail">Email Address</label>
-                            <input type="email" id="signupEmail" name="email" required>
-                            <div class="error-message" id="signupEmailError"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupPassword">Password</label>
-                            <input type="password" id="signupPassword" name="password" required>
-                            <div class="password-strength">
-                                <div class="password-strength-bar" id="passwordStrengthBar"></div>
-                            </div>
-                            <div class="error-message" id="signupPasswordError"></div>
-                            <div class="password-requirements">
-                                <div class="requirement" id="req-length">At least 8 characters</div>
-                                <div class="requirement" id="req-upper">One uppercase letter</div>
-                                <div class="requirement" id="req-lower">One lowercase letter</div>
-                                <div class="requirement" id="req-number">One number</div>
-                                <div class="requirement" id="req-special">One special character</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirmPassword">Confirm Password</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword" required>
-                            <div class="error-message" id="confirmPasswordError"></div>
-                        </div>
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
-                            <label for="agreeTerms">I agree to the Terms of Service and Privacy Policy</label>
-                        </div>
-                        <button type="submit" class="btn" id="signupBtn" disabled>Create Account</button>
-                    </form>
-                    <div class="auth-toggle">
-                        Already have an account? <a href="#" onclick="showLoginForm()">Sign in here</a>
+                <div id="walletConnectedSection" style="display: none;">
+                    <h3 style="text-align: center; margin-bottom: 15px;">Wallet Connected</h3>
+                    <div class="wallet-address" id="walletAddress"></div>
+                    <div style="text-align: center; margin: 15px 0;">
+                        <button class="btn" onclick="disconnectWallet()" style="width: 100%;">Disconnect</button>
+                    </div>
+                    <div style="text-align: center;">
+                        <button class="btn" onclick="proceedToApp()" style="width: 100%;">Proceed to App</button>
                     </div>
                 </div>
             </div>
@@ -528,9 +369,7 @@
         <div id="mainApp" style="display: none;">
             <div class="container">
                 <div class="header">
-                    <button class="logout-btn" onclick="logout()">Logout</button>
                     <div class="logo">CryptoBot Pro</div>
-                    <div id="welcomeMessage" class="welcome-message"></div>
                     <div class="nav-tabs">
                         <button class="nav-tab active" onclick="showTab('dashboard')">Dashboard</button>
                         <button class="nav-tab" onclick="showTab('config')">Configuration</button>
@@ -947,10 +786,13 @@
         let profitChart = null;
         let backtestChart = null;
         let analyticsChart = null;
+        let walletProvider = null;
+        let walletAddress = null;
 
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
             initializeApp();
+            checkWalletConnection();
         });
 
         function initializeApp() {
@@ -968,32 +810,98 @@
             loadConfiguration();
         }
 
-        // Authentication functions
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // Simple authentication (in production, use proper backend authentication)
-            if (email && password) {
-                currentUser = { email: email };
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('mainApp').style.display = 'block';
-                showNotification('Login successful!', 'success');
-                updateDashboard();
-            } else {
-                showNotification('Please enter valid credentials', 'error');
+        // Wallet connection functions
+        async function checkWalletConnection() {
+            // Check if MetaMask is installed
+            if (window.ethereum) {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                    if (accounts.length > 0) {
+                        walletProvider = 'MetaMask';
+                        walletAddress = accounts[0];
+                        showWalletConnected();
+                    }
+                } catch (error) {
+                    console.error('Error checking MetaMask connection:', error);
+                }
             }
-        });
-
-        function showSignup() {
-            showNotification('Signup feature coming soon!', 'info');
+            
+            // Check if BitGet Wallet is installed
+            if (window.bitkeep && window.bitkeep.ethereum) {
+                try {
+                    const accounts = await window.bitkeep.ethereum.request({ method: 'eth_accounts' });
+                    if (accounts.length > 0) {
+                        walletProvider = 'BitGet';
+                        walletAddress = accounts[0];
+                        showWalletConnected();
+                    }
+                } catch (error) {
+                    console.error('Error checking BitGet Wallet connection:', error);
+                }
+            }
         }
 
-        function logout() {
-            currentUser = null;
-            document.getElementById('loginScreen').style.display = 'block';
-            document.getElementById('mainApp').style.display = 'none';
+        async function connectMetaMask() {
+            if (typeof window.ethereum === 'undefined') {
+                showNotification('MetaMask is not installed!', 'error');
+                return;
+            }
+
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                if (accounts.length > 0) {
+                    walletProvider = 'MetaMask';
+                    walletAddress = accounts[0];
+                    showWalletConnected();
+                    showNotification('MetaMask connected successfully!', 'success');
+                }
+            } catch (error) {
+                console.error('Error connecting to MetaMask:', error);
+                showNotification('Failed to connect MetaMask: ' + error.message, 'error');
+            }
+        }
+
+        async function connectBitGetWallet() {
+            if (typeof window.bitkeep === 'undefined' || typeof window.bitkeep.ethereum === 'undefined') {
+                showNotification('BitGet Wallet is not installed!', 'error');
+                return;
+            }
+
+            try {
+                const accounts = await window.bitkeep.ethereum.request({ method: 'eth_requestAccounts' });
+                if (accounts.length > 0) {
+                    walletProvider = 'BitGet';
+                    walletAddress = accounts[0];
+                    showWalletConnected();
+                    showNotification('BitGet Wallet connected successfully!', 'success');
+                }
+            } catch (error) {
+                console.error('Error connecting to BitGet Wallet:', error);
+                showNotification('Failed to connect BitGet Wallet: ' + error.message, 'error');
+            }
+        }
+
+        function showWalletConnected() {
+            document.getElementById('walletConnectSection').style.display = 'none';
+            document.getElementById('walletConnectedSection').style.display = 'block';
+            document.getElementById('walletAddress').textContent = walletAddress;
+        }
+
+        function disconnectWallet() {
+            walletProvider = null;
+            walletAddress = null;
+            document.getElementById('walletConnectSection').style.display = 'block';
+            document.getElementById('walletConnectedSection').style.display = 'none';
+            showNotification('Wallet disconnected', 'info');
+        }
+
+        function proceedToApp() {
+            if (walletAddress) {
+                currentUser = { walletAddress: walletAddress, walletProvider: walletProvider };
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('mainApp').style.display = 'block';
+                updateDashboard();
+            }
         }
 
         // Tab navigation
