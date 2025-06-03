@@ -70,6 +70,25 @@
             background: linear-gradient(45deg, #764ba2, #667eea);
         }
 
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #c82333;
+            transform: translateY(-1px);
+        }
+
         .content-section {
             display: none;
             background: rgba(255, 255, 255, 0.95);
@@ -123,6 +142,66 @@
             border-color: #667eea;
         }
 
+        .form-group input.error {
+            border-color: #dc3545;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .password-strength {
+            margin-top: 5px;
+            height: 4px;
+            background: #e1e5e9;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s ease;
+        }
+
+        .strength-weak { background: #dc3545; }
+        .strength-medium { background: #ffc107; }
+        .strength-strong { background: #28a745; }
+
+        .password-requirements {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .requirement {
+            display: flex;
+            align-items: center;
+            margin: 2px 0;
+        }
+
+        .requirement.valid {
+            color: #28a745;
+        }
+
+        .requirement::before {
+            content: '✗';
+            margin-right: 8px;
+            color: #dc3545;
+        }
+
+        .requirement.valid::before {
+            content: '✓';
+            color: #28a745;
+        }
+
         .btn {
             padding: 12px 24px;
             background: linear-gradient(45deg, #667eea, #764ba2);
@@ -134,11 +213,28 @@
             transition: all 0.3s ease;
             display: inline-block;
             text-decoration: none;
+            width: 100%;
+            text-align: center;
         }
 
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
         }
 
         .btn-success {
@@ -151,6 +247,50 @@
 
         .btn-warning {
             background: linear-gradient(45deg, #ffc107, #fd7e14);
+        }
+
+        .auth-container {
+            max-width: 450px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .auth-toggle {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .auth-toggle a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-toggle a:hover {
+            text-decoration: underline;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-weight: normal;
+            font-size: 14px;
         }
 
         .status-card {
@@ -202,16 +342,6 @@
             color: white;
         }
 
-        .login-container {
-            max-width: 400px;
-            margin: 100px auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
         .positions-table {
             width: 100%;
             border-collapse: collapse;
@@ -250,6 +380,7 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             transform: translateX(400px);
             transition: transform 0.3s ease;
+            z-index: 1000;
         }
 
         .notification.show {
@@ -283,6 +414,15 @@
             margin-top: 5px;
         }
 
+        .welcome-message {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .nav-tabs {
                 flex-wrap: wrap;
@@ -297,27 +437,90 @@
             .grid {
                 grid-template-columns: 1fr;
             }
+
+            .auth-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div id="app">
-        <!-- Login Screen -->
-        <div id="loginScreen">
-            <div class="login-container">
+        <!-- Login/Signup Screen -->
+        <div id="authScreen">
+            <div class="auth-container">
                 <h2 class="logo">CryptoBot Pro</h2>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="email" required>
+                
+                <!-- Login Form -->
+                <div id="loginForm">
+                    <h3 style="text-align: center; margin-bottom: 30px; color: #555;">Welcome Back</h3>
+                    <form id="loginFormElement">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" id="loginEmail" name="email" required>
+                            <div class="error-message" id="loginEmailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" name="password" required>
+                            <div class="error-message" id="loginPasswordError"></div>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <label for="rememberMe">Remember me for 7 days</label>
+                        </div>
+                        <button type="submit" class="btn" id="loginBtn">Sign In</button>
+                    </form>
+                    <div class="auth-toggle">
+                        Don't have an account? <a href="#" onclick="showSignupForm()">Create one here</a>
                     </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="password" required>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signupForm" style="display: none;">
+                    <h3 style="text-align: center; margin-bottom: 30px; color: #555;">Create Account</h3>
+                    <form id="signupFormElement">
+                        <div class="form-group">
+                            <label for="signupFullName">Full Name</label>
+                            <input type="text" id="signupFullName" name="fullName" required>
+                            <div class="error-message" id="signupFullNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupEmail">Email Address</label>
+                            <input type="email" id="signupEmail" name="email" required>
+                            <div class="error-message" id="signupEmailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <input type="password" id="signupPassword" name="password" required>
+                            <div class="password-strength">
+                                <div class="password-strength-bar" id="passwordStrengthBar"></div>
+                            </div>
+                            <div class="error-message" id="signupPasswordError"></div>
+                            <div class="password-requirements">
+                                <div class="requirement" id="req-length">At least 8 characters</div>
+                                <div class="requirement" id="req-upper">One uppercase letter</div>
+                                <div class="requirement" id="req-lower">One lowercase letter</div>
+                                <div class="requirement" id="req-number">One number</div>
+                                <div class="requirement" id="req-special">One special character</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            <div class="error-message" id="confirmPasswordError"></div>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                            <label for="agreeTerms">I agree to the Terms of Service and Privacy Policy</label>
+                        </div>
+                        <button type="submit" class="btn" id="signupBtn" disabled>Create Account</button>
+                    </form>
+                    <div class="auth-toggle">
+                        Already have an account? <a href="#" onclick="showLoginForm()">Sign in here</a>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; margin-bottom: 15px;">Login</button>
-                    <button type="button" class="btn" style="width: 100%; background: #6c757d;" onclick="showSignup()">Sign Up</button>
-                </form>
+                </div>
             </div>
         </div>
 
@@ -325,7 +528,9 @@
         <div id="mainApp" style="display: none;">
             <div class="container">
                 <div class="header">
+                    <button class="logout-btn" onclick="logout()">Logout</button>
                     <div class="logo">CryptoBot Pro</div>
+                    <div id="welcomeMessage" class="welcome-message"></div>
                     <div class="nav-tabs">
                         <button class="nav-tab active" onclick="showTab('dashboard')">Dashboard</button>
                         <button class="nav-tab" onclick="showTab('config')">Configuration</button>
