@@ -1028,7 +1028,7 @@
                             beginAtZero: true,
                             ticks: {
                                 callback: function(value) {
-                                    return ' + value.toFixed(2);
+                                    return '$' + value.toFixed(2);
                                 }
                             }
                         }
@@ -1065,7 +1065,7 @@
                             beginAtZero: false,
                             ticks: {
                                 callback: function(value) {
-                                    return ' + value.toFixed(2);
+                                    return '$' + value.toFixed(2);
                                 }
                             }
                         }
@@ -1187,10 +1187,10 @@
             const usedMargin = totalBalance - availableBalance;
             const totalProfit = Math.random() * 1000 - 200;
             
-            document.getElementById('totalBalance').textContent = ' + totalBalance.toFixed(2);
-            document.getElementById('availableBalance').textContent = ' + availableBalance.toFixed(2);
-            document.getElementById('usedMargin').textContent = ' + usedMargin.toFixed(2);
-            document.getElementById('totalProfit').textContent = ' + totalProfit.toFixed(2);
+            document.getElementById('totalBalance').textContent = '$' + totalBalance.toFixed(2);
+            document.getElementById('availableBalance').textContent = '$' + availableBalance.toFixed(2);
+            document.getElementById('usedMargin').textContent = '$' + usedMargin.toFixed(2);
+            document.getElementById('totalProfit').textContent = '$' + totalProfit.toFixed(2);
             
             // Update trading statistics
             document.getElementById('totalTrades').textContent = Math.floor(Math.random() * 100 + 50);
